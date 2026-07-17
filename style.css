@@ -1,42 +1,73 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #1976d2;
-    color: white;
-    text-align: center;
+body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    background:linear-gradient(180deg,#1b75d0,#5aa9ff);
+    min-height:100vh;
 }
 
-.app {
-    padding: 30px;
+.container{
+    display:flex;
+    justify-content:center;
+    padding:30px 15px;
 }
 
-h1 {
-    font-size: 40px;
+.card{
+    background:white;
+    width:100%;
+    max-width:500px;
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.20);
 }
 
-p {
-    font-size: 24px;
+h1{
+    text-align:center;
+    color:#1565c0;
+    margin-bottom:20px;
 }
 
-button {
-    width: 90%;
-    max-width: 350px;
-    padding: 20px;
-    margin: 20px;
-    border: none;
-    border-radius: 20px;
-    font-size: 24px;
-    background: white;
-    color: #1976d2;
+.bonjour{
+    font-size:24px;
+    text-align:center;
 }
 
-#exercice {
-    margin-top: 40px;
-    font-size: 32px;
+.objectif{
+    background:#eef6ff;
+    padding:18px;
+    border-radius:15px;
+    color:#333;
+    font-size:20px;
+    margin:25px 0;
+    text-align:center;
 }
 
-#timer {
-    font-size: 60px;
-    margin: 20px;
-    font-weight: bold;
+#start{
+    width:100%;
+    padding:18px;
+    font-size:24px;
+    border:none;
+    border-radius:15px;
+    background:#1976d2;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#start:hover{
+    transform:scale(1.03);
+}
+
+.menu{
+    display:grid;
+    gap:15px;
+    margin-top:25px;
+}
+
+.menu button{
+    padding:16px;
+    font-size:20px;
+    border:none;
+    border-radius:15px;
+    background:#f5f7fb;
+    cursor:pointer;
 }
