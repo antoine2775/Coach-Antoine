@@ -1,58 +1,115 @@
-const exercices = [
-  "Échauffement",
-  "Assis-debout sur chaise",
-  "Développé épaules avec haltères",
-  "Curl biceps",
-  "Rotation du buste",
-  "Marche sur place",
-  "Étirements"
-];
+const start = document.getElementById("start");
 
-let numero = 0;
-let temps = 40;
-let intervalle;
+start.addEventListener("click", () => {
 
-function demarrer() {
+    document.querySelector(".card").innerHTML = `
 
-  numero = 0;
-  lancerExercice();
+    <h1>💪 Séance du jour</h1>
 
-}
+    <h2 id="exo">Échauffement</h2>
 
-function lancerExercice() {
+    <div id="temps" style="
+        font-size:70px;
+        text-align:center;
+        color:#1976d2;
+        margin:30px 0;
+    ">
+    60
+    </div>
 
-  if (numero >= exercices.length) {
+    <div style="
+        width:100%;
+        height:18px;
+        background:#ddd;
+        border-radius:10px;
+        overflow:hidden;
+    ">
 
-    document.getElementById("exercice").innerHTML =
-    "🎉 Bravo Antoine ! Séance terminée";
+        <div id="barre"
+        style="
+        width:100%;
+        height:100%;
+        background:#1976d2;
+        ">
+        </div>
 
-    document.getElementById("timer").innerHTML =
-    "";
+    </div>
 
-    return;
-  }
+    <p style="margin-top:25px;text-align:center;font-size:22px">
 
-  document.getElementById("exercice").innerHTML =
-  exercices[numero];
+    Respire calmement 😊
 
-  temps = 40;
+    </p>
 
-  intervalle = setInterval(function(){
+    `;
 
-    document.getElementById("timer").innerHTML =
-    temps + " secondes";
+    const exercices=[
+        ["Échauffement",60],
+        ["Assis - Debout",40],
+        ["Développé épaules",40],
+        ["Curl biceps",40],
+        ["Rotation du buste",40],
+        ["Marche sur place",60],
+        ["Étirements",60]
+    ];
 
-    temps--;
+    let numero=0;
 
-    if (temps < 0) {
+    function lancer(){
 
-      clearInterval(intervalle);
+        if(numero>=exercices.length){
 
-      numero++;
+            document.querySelector(".card").innerHTML=`
 
-      lancerExercice();
+            <h1>🎉 Bravo Antoine !</h1>
+
+            <h2>Séance terminée</h2>
+
+            <button onclick="location.reload()">
+
+            Retour à l'accueil
+
+            </button>
+
+            `;
+
+            return;
+
+        }
+
+        let exo=exercices[numero][0];
+        let duree=exercices[numero][1];
+
+        document.getElementById("exo").innerHTML=exo;
+
+        let restant=duree;
+
+        let timer=setInterval(()=>{
+
+            document.getElementById("temps").innerHTML=restant;
+
+            document.getElementById("barre").style.width=
+            (restant/duree*100)+"%";
+
+            restant--;
+
+            if(restant<0){
+
+                clearInterval(timer);
+
+                numero++;
+
+                lancer();
+
+            }
+
+        },1000);
 
     }
+
+    lancer();
+
+});
 
   },1000);
 
